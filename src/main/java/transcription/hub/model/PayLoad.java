@@ -1,11 +1,12 @@
 package transcription.hub.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class PayLoad {
 
-	private String applicationId, jobId, taskId, recordingId, outputLanguage;
+	private String applicationId;
+	private String jobId;
+	private String taskId;
+	private String recordingId;
+	private String outputLanguage;
 
 	public String getApplicationId() {
 		return applicationId;

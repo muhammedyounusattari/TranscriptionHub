@@ -11,13 +11,12 @@ import transcription.hub.model.PayLoad;
 public class TranscriptionServiceImpl implements TranscriptionService {
 
 	@Override
-	public String getMediaAssert(PayLoad payload) {
+	public String processTranscription(PayLoad payload) {
 		ResponseEntity<byte[]> response=  TranscriptionMapper.getMedia(payload);
 		if(response.getStatusCode() == HttpStatus.OK){
-			TranscriptionMapper.postHybridTranscription(response);
+			TranscriptionMapper.postHybridTranscription(response,payload.getRecordingId());
+			TranscriptionMapper.createTranscriptionJob(payload);
 		}
-		
 		return null;
 	}
-
 }
